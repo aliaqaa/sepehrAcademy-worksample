@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import './App.css'
-
+import React from 'react'
+import RoutesApp from './routes/Route'
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
      
+    <RoutesApp/>
     </>
   )
 }
