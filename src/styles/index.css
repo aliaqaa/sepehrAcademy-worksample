@@ -130,3 +130,10 @@ body {
   font-weight: bold;
   color: #fff;
 }
+.bg-body{
+  background-color: rgb(255, 248, 248);
+
+}
+.range-color{
+  accent-color: coral;
+}

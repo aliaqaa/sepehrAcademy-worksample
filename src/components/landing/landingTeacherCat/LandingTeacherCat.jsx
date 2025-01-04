@@ -11,10 +11,10 @@ function LandingTeacherCat() {
           alt="rec"
         />
         <div id="rightside" className="text-center ">
-          <h1 className="flex font-extrabold text-2xl items-center gap-2">  برترین اساتید  
+          <h1 className="flex font-extrabold text-2xl items-center gap-2v hoverscale">  برترین اساتید  
             <h2 className="text-green-400 text-xl"> رو همینجا پیدا می کنید!!</h2>
            </h1>
-          <p className="font-extralight">
+          <p className="font-extralight hoverscale">
             برجسته ترین اساتید بزرگترین مجموعه برنامه نویسی استان مازندران رو
             بهتر بشناسیم !
           </p>

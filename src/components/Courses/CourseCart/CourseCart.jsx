@@ -32,7 +32,7 @@ function CourseCart({
     <>
     <div className="border shadow-sm  rounded-2xl overflow-visible my-10 text-black">
     <Link
-      to={`${course.courseId}`}
+      to={`/courses/${course.courseId}`}
       className=""
     >
       <img

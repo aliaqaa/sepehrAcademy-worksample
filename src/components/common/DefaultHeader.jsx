@@ -6,8 +6,8 @@ import { Link, NavLink } from "react-router";
 function DefualtHeader() {
   return (
     <>
-      <div className="container m-auto flex justify-between px-5 ">
-        <Link href="/">
+      <div className="container m-auto flex justify-between p-5 ">
+        <Link href="/" className="hoverscale">
         <img src={logo} alt="logo" />
         </Link>
         <div className="flex justify-around items-center font-extrabold">
@@ -15,7 +15,7 @@ function DefualtHeader() {
           <NavLink   
             key={item.id}          
             to={item.href}      
-            className="nav-link mx-3 text-black"  
+            className="nav-link mx-3 text-black hoverscale"  
            
           >  
             {item.title}        

@@ -19,7 +19,7 @@ import {
   getSubCourseCommentApi,  
   getSubNewsCommentApi,  
   addCourseStarsApi,  
-} from '/src/services/api/CourseApi.js'; // Adjust path according to your project structure  
+} from '../services/api/CourseApi'; // Adjust path according to your project structure  
 
 const useCourse = () => {  
   const [courses, setCourses] = useState([]);  
@@ -65,8 +65,18 @@ const useCourse = () => {
       setLoading(false);  
     }  
   }, []);  
+  const fetchCoursesCommentApi = useCallback(async (params) => {  
+    setLoading(true);  
+    try {  
+      const data = await getCoursesCommentApi(params);  
+      setCourses(data);  
+    } catch (err) {  
+      setError(err.message);  
+    } finally {  
+      setLoading(false);  
+    }  
+  }, []);  
 
-  // Other fetch functions can be added similarly...  
 
   const resetError = () => setError(null);  
 
@@ -79,8 +89,9 @@ const useCourse = () => {
     fetchCourseDetails,  
     fetchCoursesWithPagination,  
     resetError,  
-    // Export other functions as needed  
-    // For example: sendCommentApi, addCourseLikeApi, etc.  
+    fetchCoursesCommentApi,
+
+
   };  
 };  
 

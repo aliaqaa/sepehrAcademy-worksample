@@ -1,0 +1,34 @@
+.fade-effect {  
+    position: relative;  
+    overflow: hidden;  
+  }  
+  
+  .fade-effect::after {  
+    content: '';  
+    position: absolute;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    height: 50px; /* Adjust the height for the fade effect */  
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);  
+  }  
+  
+  .read-more {  
+    display: block;  
+  
+    
+    border: 1px solid ;
+    text-align: center;  
+    margin-top: 10px; /* Space above the button */  
+    cursor: pointer;  
+    color: #3b82f6; /* Sky blue color */  
+    background: transparent; /* Light sky blue background */  
+    padding: 10px 20px; /* Padding for the button */  
+    border-radius: 9999px; /* Fully rounded button */  
+    transition: background 0.3s; /* Smooth background transition */  
+  }  
+  
+  .read-more:hover {  
+    background: #dbf7ff; /* Darker blue on hover */  
+    color: #3b82f6; /* Change text color on hover */  
+  }

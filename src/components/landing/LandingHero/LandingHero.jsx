@@ -5,15 +5,15 @@ function LandingHero() {
   return (
     <div className="container flex justify-around my-20 p-10 ">
       <div id="RightSide" className="p-20">
-        <h1 className="text-6xl flex font-extrabold">
+        <h1 className="text-6xl flex font-extrabold hoverscale">
           عنوان
-          <h1 className="text-6xl text-sky-400">آموزشگاه</h1>
+          <h1 className="text-6xl text-sky-400 ">آموزشگاه</h1>
         </h1>
         <span className=" text-start my-10 ">
-          <p className="my-2 ">
+          <p className="my-2 hoverscale">
             مرجع اموزش زنده و تعاملی برنامه نویسی حوزه وب{" "}
           </p>
-          <p className="my-2 ">
+          <p className="my-2 hoverscale">
             با دسترسی به بیش از هفت هزار ویدیوی اموزشی به زبان فارسی
           </p>
         </span>
@@ -23,7 +23,7 @@ function LandingHero() {
             className="bg-transparent focus:outline-none px-2 my-10 w-60"
             placeholder="دنبال چی میگردی؟"
           />
-          <button className="bg-authOrangbutton p-2 rounded-full text-white">
+          <button className="bg-authOrangbutton p-2 rounded-full text-white hoverscale">
             <FaSearch />
           </button>
         </span>
@@ -35,20 +35,23 @@ function LandingHero() {
             width="500"
             height="100"
             alt="hero"
+            
           />
           <img
-            className="absolute -top-10 -left-10"
+            className="absolute -top-10 -left-10 hoverscale"
             src="/public/images/post/1000 student.png"
             width="160"
             height="100"
             alt="hero"
+            
           />
           <img
-            className="absolute -bottom-16 "
+            className="absolute -bottom-16  hoverscale"
             src="/public/images/post/50 teacher.png"
             width="160"
             height="100"
             alt="hero"
+            
           />
         </span>
       </div>

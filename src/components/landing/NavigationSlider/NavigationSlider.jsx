@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";  
 import "swiper/css/pagination";  
 import { Autoplay, Pagination, Navigation } from "swiper/modules";  
-import CourseCart from "../CourseCart/CourseCart";  
+import CourseCart from "../../Courses/CourseCart/CourseCart";    
 import useCourse from "../../../hooks/useCourse";  
 import { ScaleLoader } from "react-spinners"; // Import the ScaleLoader  
 

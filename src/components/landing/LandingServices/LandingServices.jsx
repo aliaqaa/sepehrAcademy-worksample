@@ -14,7 +14,7 @@ function LandingServices() {
         {LandingServiceItems.map((item) => (
           <div
             key={item.id}
-            className={`relative shadow-inner border  rounded-xl w-80 p-6 text-center h-40  ${item.class} `}
+            className={`relative shadow-inner border  rounded-xl w-80 p-6 text-center h-40  ${item.class} hoverscale`}
           >
             <span
               className={`absolute scale-150 -top-8 left-1/2 transform -translate-x-1/2 rounded-full bg-primaryCyan ${item.color}`}
