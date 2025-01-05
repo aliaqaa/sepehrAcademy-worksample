@@ -1,13 +1,14 @@
-import React from 'react'
-import CourseHeroSection from './CoursesHeroSection/CoursesHeroSection'
+import React from "react";
+import CourseHeroSection from "./CoursesHeroSection/CoursesHeroSection";
+import CoursesBox from "./CoursesBox/CoursesBox";
 function CoursesListIndex() {
   return (
     <>
+      <CourseHeroSection />
 
-    <CourseHeroSection/>
+      <CoursesBox />
     </>
-    
-  )
+  );
 }
 
-export default CoursesListIndex
+export default CoursesListIndex;

@@ -1,5 +1,5 @@
 import React from 'react'
-import CoursesListIndex from '../CoursePage/CoursePage'
+import CoursesListIndex from '../../components/Courses/index'
 function CoursesList() {
   return (
     <>

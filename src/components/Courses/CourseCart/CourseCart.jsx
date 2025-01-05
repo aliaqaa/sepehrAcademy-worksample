@@ -30,7 +30,7 @@ function CourseCart({
   };
   return (
     <>
-    <div className="border shadow-sm  rounded-2xl overflow-visible my-10 text-black">
+    <div className="border shadow-sm  rounded-2xl overflow-visible my-10 text-black bg-white">
     <Link
       to={`/courses/${course.courseId}`}
       className=""
@@ -41,7 +41,7 @@ function CourseCart({
         layout="responsive"
         width={280}
         height={200}
-        className="rounded-2xl scale-x-95 content-center m-auto -translate-y-9"
+        className="rounded-2xl scale-x-90 content-center m-auto -translate-y-9"
       />
       <span className="flex justify-start mr-3 font-extrabold ">
         {course.title}

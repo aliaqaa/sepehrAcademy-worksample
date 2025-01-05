@@ -19,7 +19,7 @@ import {
   getSubCourseCommentApi,  
   getSubNewsCommentApi,  
   addCourseStarsApi,  
-} from '../services/api/CourseApi'; // Adjust path according to your project structure  
+} from '../services/api/CourseApi'; 
 
 const useCourse = () => {  
   const [courses, setCourses] = useState([]);  
@@ -76,6 +76,39 @@ const useCourse = () => {
       setLoading(false);  
     }  
   }, []);  
+  const fetchAllCourseLevelApi = useCallback(async () => {  
+    setLoading(true);  
+    try {  
+      const data = await getAllCourseLevelApi();  
+      setCourses(data);  
+    } catch (err) {  
+      setError(err.message);  
+    } finally {  
+      setLoading(false);  
+    }  
+  }, []);  
+  const fetchCourseTypesApi = useCallback(async () => {  
+    setLoading(true);  
+    try {  
+      const data = await getCourseTypesApi();  
+      setCourses(data);  
+    } catch (err) {  
+      setError(err.message);  
+    } finally {  
+      setLoading(false);  
+    }  
+  }, []);  
+  const fetchTechnologiesApi = useCallback(async () => {  
+    setLoading(true);  
+    try {  
+      const data = await getTechnologiesApi();  
+      setCourses(data);  
+    } catch (err) {  
+      setError(err.message);  
+    } finally {  
+      setLoading(false);  
+    }  
+  }, []);  
 
 
   const resetError = () => setError(null);  
@@ -90,7 +123,9 @@ const useCourse = () => {
     fetchCoursesWithPagination,  
     resetError,  
     fetchCoursesCommentApi,
-
+    fetchAllCourseLevelApi,
+    fetchCourseTypesApi,
+    fetchTechnologiesApi,
 
   };  
 };  

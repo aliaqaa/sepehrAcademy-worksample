@@ -2,3 +2,4 @@
 2.Complete Comment Section Of Course Page 
 3.Dynamic Teacher Picture in Course Page
 4.Create Related Courses For The Course Page
+5.Fix Sidebar Course Info (use map )
