@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import useCourse from "../../../hooks/useCourse";
 import CoursesFilterBoxAccordion from "../CoursesFilterBoxAccordion/CoursesFilterBoxAccordion";
 
 function CoursesFilterBox({ query, setQuery }) {
+  const [filters, setFilters] = useState({
+    Level: null,
+    category: null,
+    type: null,
+    PageNumber: 1,
+    Sort: "Active",
+  });
+
   const {
     courses: courseLevel,
     loading: loadingLevels,
@@ -26,8 +34,27 @@ function CoursesFilterBox({ query, setQuery }) {
     fetchTechnologiesApi();
     fetchCourseTypesApi();
   }, [fetchAllCourseLevelApi, fetchTechnologiesApi, fetchCourseTypesApi]);
+  console.log(query)
 
-  // Check if any data is loading
+  useEffect(() => {
+    const queryString = `?PageNumber=${filters.PageNumber}&RowsOfPage=10&SortingCol=${filters.Sort}${
+      filters.Level ? `&courseLevelId=${filters.Level}` : ""
+    }${filters.category ? `&ListTech=${filters.category}` : ""}${
+      filters.type ? `&CourseTypeId=${filters.type}` : ""
+    }`;
+    setQuery(queryString);
+  }, [filters, setQuery]);
+
+  const handleResetFilters = () => {
+    setFilters({
+      Level: null,
+      category: null,
+      type: null,
+      PageNumber: 1,
+      Sort: "Active",
+    });
+  };
+
   const isLoading = loadingLevels || loadingTechs || loadingTypes;
 
   return (
@@ -37,18 +64,36 @@ function CoursesFilterBox({ query, setQuery }) {
           <CiFilter />
           <p>فیلتر ها</p>
         </span>
-        <button className="text-red-400 m-3" onClick={() => setQuery("")}>
+        <button className="text-red-400 m-3" onClick={handleResetFilters}>
           <RiDeleteBin5Line />
         </button>
       </div>
       <div>
         {isLoading ? (
-          <div>Loading...</div> // Show loading indicator
+          <div>Loading...</div>
         ) : (
           <>
-            <CoursesFilterBoxAccordion courses={courseLevel} title="سطح" />
-            <CoursesFilterBoxAccordion courses={courseTech} title="تکنولوژی" />
-            <CoursesFilterBoxAccordion courses={courseType} title="نوع دوره" />
+            <CoursesFilterBoxAccordion
+              courses={courseLevel}
+              title="سطح"
+              filterKey="Level"
+              filters={filters}
+              setFilters={setFilters}
+            />
+            <CoursesFilterBoxAccordion
+              courses={courseTech}
+              title="تکنولوژی"
+              filterKey="category"
+              filters={filters}
+              setFilters={setFilters}
+            />
+            <CoursesFilterBoxAccordion
+              courses={courseType}
+              title="نوع دوره"
+              filterKey="type"
+              filters={filters}
+              setFilters={setFilters}
+            />
           </>
         )}
       </div>
