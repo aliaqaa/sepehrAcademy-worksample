@@ -5,7 +5,7 @@ import {
   getNewsWithPaginationApi,  
   getNewsCommentsApi,  
   sendCommentApi,  
-} from '/src/services/api/NewsApi'; // Adjust the path according to your project structure  
+} from '../services/api/NewsApi'; // Adjust the path according to your project structure  
 
 const useNews = () => {  
   const [news, setNews] = useState([]);  

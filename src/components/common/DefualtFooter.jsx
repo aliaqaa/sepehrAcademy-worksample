@@ -1,65 +1,89 @@
 import AuthFooterItems from "../../mock/AuthFooter";
 import logo from "/public/images/icons/logo (1).png";
 import FooterItems from "../../mock/FooterItems";
-import{ Link }from "react-router";
+import { Link } from "react-router";
+
 function DefualtFooter() {
   return (
     <>
-      <div className="container-fluid w-full flex justify-center mt-20 gap-20  relative text-cyanlogin items-center">
+      {/* Main Footer Container */}
+      <div className="w-full relative  py-10 overflow-hidden max-sm:pt-10 max-xl:pt-20 sm:pt-40 md: lg:pt-12 xl:pt-16 2xl:pt-40">
+        {/* Background Image */}
         <img
-          className=" absolute bottom-0 -z-10 "
+          className="absolute inset-0 w-full container h-full object-cover -z-10 mt-10"
           src="/public/images/icons/Rectangle 14.png"
-          alt="rec"
+          alt="background"
         />
-        <div className=" ">
-          <span className="hoverscale">
-            <p className="hoverscale">مجموعه آموزشی فلان فعالیت خود را از سال ۱۳۹۰ آغاز کرده است و </p>
-            <p className="hoverscale">امروز به بزرگترین کلونی برنامه نویسی شمال کشور تبدیل شده است</p>
-          </span>
-          <address className="font-extrabold hoverscale">
-            ساری ، میدان خــزر ، جــاده فــرح آباد ،<br /> جنب مجتمع دنیای آرزو
-          </address>
-          <p>011 - 43332000</p>
-        </div>
 
-        <div className="flex flex-col justify-center my-9 items-center ">
-          <Link href="/" className="my-4 hoverscale">
-            <img src={logo} alt="logo" />
-          </Link>
-          <Link
-            className="bg-cyanlogin p-2 rounded-3xl text-white hoverscale"
-            href="mailto:ali.tousi77@gmail.com"
-          >
-            Ali.tousi77@gmail.com
-          </Link>
-          <span className="flex my-3 ">
-            {AuthFooterItems.map((item) => (
-              <div key={item.id} className="mx-1 hoverscale">
-                <a href={item.link}>
-                  {" "}
-                  <img src={item.img} alt={item.img} width="40" height="40" />
-                </a>
-              </div>
-            ))}
-          </span>
-        </div>
+        {/* Footer Content */}
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8 relative z-10">
+          {/* About Section */}
+          <div className="text-center lg:text-left max-w-md max-sm:pt-40">
+            <p className="text-gray-700 hover:scale-105 transition-transform">
+              مجموعه آموزشی فلان فعالیت خود را از سال ۱۳۹۰ آغاز کرده است و
+            </p>
+            <p className="text-gray-700 hover:scale-105 transition-transform">
+              امروز به بزرگترین کلونی برنامه نویسی شمال کشور تبدیل شده است
+            </p>
+            <address className="font-bold text-gray-800 mt-4 hover:scale-105 transition-transform">
+              ساری ، میدان خــزر ، جــاده فــرح آباد ،
+              <br /> جنب مجتمع دنیای آرزو
+            </address>
+            <p className="text-gray-700 mt-2 hover:scale-105 transition-transform">
+              011 - 43332000
+            </p>
+          </div>
 
-        <ul className="grid grid-cols-2 gap-x-5">
-          {FooterItems.map((item) => (
-            <Link href={item.href} key={item.id} className="list-disc hoverscale">
-              <li>{item.title}</li>
+          {/* Logo and Social Links */}
+          <div className="flex flex-col items-center space-y-4">
+            <Link to="/" className="hover:scale-105 transition-transform">
+              <img src={logo} alt="logo" className="" />
             </Link>
-          ))}
-        </ul>
-        <img
-          src="/public/images/icons/samandehi-ezgif 1.png"
-          alt="badge"
-          width="140"
-          height="140"
-        />
+            <Link
+              to="mailto:ali.tousi77@gmail.com"
+              className="bg-cyan-600 text-white px-4 py-2 rounded-full hover:scale-105 transition-transform"
+            >
+              Ali.tousi77@gmail.com
+            </Link>
+            <div className="flex space-x-4">
+              {AuthFooterItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.link}
+                  className="hover:scale-105 transition-transform"
+                >
+                  <img src={item.img} alt={item.title} className="w-10 h-10" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer Links */}
+          <ul className="grid grid-cols-2 gap-4">
+            {FooterItems.map((item) => (
+              <li key={item.id}>
+                <Link
+                  to={item.href}
+                  className="text-gray-700 hover:text-cyan-600 hover:scale-105 transition-transform"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Badge Image */}
+          <img
+            src="/public/images/icons/samandehi-ezgif 1.png"
+            alt="badge"
+            className="w-32 h-32 lg:w-40 lg:h-40"
+          />
+        </div>
       </div>
-      <div className="container bg-cyanlogin font-extrabold text-white z-10 hoverscale">
-        کلیه حقوق این وب سایت متعلق به آموزشگاه فلان می باشد{" "}
+
+      {/* Copyright Section */}
+      <div className="w-full container bg-cyan-600 py-4 text-center text-white font-bold relative z-10">
+        کلیه حقوق این وب سایت متعلق به آموزشگاه فلان می باشد
       </div>
     </>
   );

@@ -30,43 +30,40 @@ function CourseCart2({
   };
   return (
     <>
-      <div className="border  shadow-sm w-full rounded-2xl overflow-visible my-1 text-black bg-white">
+      <div className="border  shadow-sm w-full rounded-2xl overflow-visible my-1 text-black bg-white relative ">
         <Link
           to={`/courses/${course.courseId}`}
           className="flex items-center text-center gap-2"
         >
-          <div className="flex justify-between items-center p-3 text-blue-400">
-            <MdAddShoppingCart className="text-3xl" />
-            <span className="flex gap-2 ">
-              {course.cost}
-              <p>تومان</p>
-            </span>
-          </div>
-          <hr class="my-2 h-0.5 border-t-1 bg-black dark:bg-white/10" />
-          <span className="flex justify-start mr-3 font-extrabold ">
-            {course.title}
-          </span>
-          <br />
-          <div className=" justify-between">
-            <span className="font-extralight flex p-2 items-center gap-2">
-              {course.teacherName}
-              <FaUser className="text-gray-500" />
-            </span>
-            <span className="font-extralight flex p-2 items-center gap-2">
-              {course.currentRegistrants}
-              <CgUserList />
-            </span>
-          </div>
-          <div className=" justify-between">
-            <span className="font-extralight flex p-2 items-center gap-2">
-              {course.levelName}
-              <FaLayerGroup className="text-gray-500" />
-            </span>
-            <span className="font-extralight flex p-2 items-center gap-2">
-              <ReactStars {...courseStars} />
-            </span>
-          </div>
+          <div className="flex flex-col-reverse p-2 ">
+            <div className="flex justify-between items-center p-3 text-blue-400">
+              <MdAddShoppingCart className="text-3xl" />
+              <span className="flex gap-2 ">
+                {course.cost}
+                <p>تومان</p>
+              </span>
+            </div>
+            <hr class="my-2 h-0.5 border-t-1 bg-black dark:bg-white/10" />
+            <br />
+            <div className=" justify-between">
 
+          
+ 
+            </div>
+            <div className=" justify-between">
+              <span className="font-extralight flex p-2 items-center gap-2">
+                {course.levelName}
+                <FaLayerGroup className="text-gray-500" />
+              </span>
+              <span className="font-extralight flex p-2 items-center gap-2">
+                <ReactStars {...courseStars} />
+              </span>
+              
+            </div>
+            <span className="flex justify-start mr-3 font-extrabold mt-4">
+              {course.title}
+            </span>
+          </div>
           <img
             src={
               course.tumbImageAddress ? course.tumbImageAddress : fallbackimage
@@ -75,7 +72,7 @@ function CourseCart2({
             layout="responsive"
             width={280}
             height={200}
-            className="rounded-2xl scale-x-90 content-center  m-auto "
+            className="rounded-2xl scale-x-90 content-center "
           />
         </Link>
       </div>

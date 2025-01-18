@@ -13,7 +13,7 @@ const LandingServiceItems = [
       description: "متن ساختگی صنعت طراحی و چاپ برای استفاده طراحان گرافیک است.",
       img: "/public/images/icons/certificate.png",
       color:"bg-[#0184CE] ",
-      class:"mt-40 bg-[#C1E3F680]",
+      class:"max-xl:mt-40 bg-[#C1E3F680]",
     },
     {
       id: crypto.randomUUID(),
@@ -29,7 +29,7 @@ const LandingServiceItems = [
       description: "متن ساختگی صنعت طراحی و چاپ برای استفاده طراحان گرافیک است.",
       img: "/public/images/icons/chat.png",
       color:"bg-[#E48900] ",
-      class:"mt-40 bg-[#DDCAAD80]",
+      class:"max-xl:mt-40 bg-[#DDCAAD80]",
     },
   ];
   

@@ -12,6 +12,7 @@
   );
   /* font: kalameh; */
   direction: rtl;
+  margin: auto;
 }
 /* @font-face {
   font-family: kalameh;
@@ -136,4 +137,29 @@ body {
 }
 .range-color{
   accent-color: coral;
+}
+/* Add this to your global CSS file */
+.hoverscale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hoverscale:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile menu animation */
+.md\:hidden {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide scrollbar when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+.linear-gradient{
+  background: rgb(1,206,201);
+background: linear-gradient(150deg, rgba(1,206,201,0.5) 0%, rgba(228,137,0,0.5) 100%);
+}
+.roundedtr{
+  border-top-right-radius: 6rem;
 }

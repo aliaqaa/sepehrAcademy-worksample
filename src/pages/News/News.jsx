@@ -4,8 +4,6 @@ import NewsIndex from '../../components/News/NewsIndex'
 function News() {
   return (
     <>
-    
-    
     <NewsIndex/>
     </>
   )

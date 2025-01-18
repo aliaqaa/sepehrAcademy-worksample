@@ -6,6 +6,7 @@ import NotFound from '../pages/NotFound/NotFound';
 import CoursesList from '../pages/CoursesList/CoursesList';  
 import CoursePage from '../pages/CoursePage/CoursePage';  
 import News from '../pages/News/News';
+import NewsPage from '../components/News/NewsPage/NewsPage';
 
 const RoutesApp = () => (  
   <Router>  
@@ -14,7 +15,8 @@ const RoutesApp = () => (
         <Route path="/" element={<Landing />} />  
         <Route path="/courses" element={<CoursesList />} />  
         <Route path="/courses/:id" element={<CoursePage />} />  
-        <Route path="/News" element={<News />} />  
+        <Route path="/news" element={<News />} />  
+        <Route path="/news/:id" element={<NewsPage />} />  
         <Route path="*" element={<NotFound />} />  
       </Route>  
     </Routes>  

@@ -10,7 +10,7 @@ function LandingArticleGrid() {
         خـــودت رو با خـــبر کن !{" "}
       </h3>
      
-      <div className="grid grid-cols-4 grid-rows-2 gap-1 place-items-stretch mb-40 mx-40">
+      <div className="grid grid-cols-4 grid-rows-2 gap-1 place-items-stretch mb-40 mx-40 md:mx-10 max-sm:grid-cols-1 max-sm:grid-rows-1 max-sm:mx-10 max-lg:mx-10">
         {LandingArticleGrids.map((item)=>(
             
             <img key={item.id} src={item.img} alt={item.id} className={`hoverscale ${item.class} 	`}  />
