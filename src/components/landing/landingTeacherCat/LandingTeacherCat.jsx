@@ -6,7 +6,7 @@ function LandingTeacherCat() {
     <>
       <div className="container mx-auto  flex flex-col lg:flex-row justify-around items-center relative my-20 lg:my-40 px-4 pt-20">
       <img
-          className="absolute inset-0 w-full container h-full object-cover -z-10 mt-10"
+          className="absolute inset-0 w-full container h-full    -z-10 mt-10"
           src="/public/images/icons/Rectangle-gonda.png"
           alt="background"
         />

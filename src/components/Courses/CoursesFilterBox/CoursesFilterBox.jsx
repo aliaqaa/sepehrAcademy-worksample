@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { CiFilter } from "react-icons/ci";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import useCourse from "../../../hooks/useCourse";
@@ -6,9 +6,9 @@ import CoursesFilterBoxAccordion from "../CoursesFilterBoxAccordion/CoursesFilte
 
 function CoursesFilterBox({ query, setQuery }) {
   const [filters, setFilters] = useState({
-    Level: null,
-    category: null,
-    type: null,
+    Level: [], // Array for selected levels
+    category: [], // Array for selected categories
+    type: [], // Array for selected types
     PageNumber: 1,
     Sort: "Active",
   });
@@ -30,26 +30,36 @@ function CoursesFilterBox({ query, setQuery }) {
   } = useCourse();
 
   useEffect(() => {
-    fetchAllCourseLevelApi();
-    fetchTechnologiesApi();
-    fetchCourseTypesApi();
-  }, [fetchAllCourseLevelApi, fetchTechnologiesApi, fetchCourseTypesApi]);
-  console.log(query)
+    const fetchData = async () => {
+      try {
+        await fetchAllCourseLevelApi();
+        await fetchTechnologiesApi();
+        await fetchCourseTypesApi();
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const queryString = useMemo(() => {
+    return `?PageNumber=${filters.PageNumber}&RowsOfPage=10&SortingCol=${filters.Sort}${
+      filters.Level.length > 0 ? `&courseLevelId=${filters.Level.join(",")}` : ""
+    }${filters.category.length > 0 ? `&ListTech=${filters.category.join(",")}` : ""}${
+      filters.type.length > 0 ? `&CourseTypeId=${filters.type.join(",")}` : ""
+    }`;
+  }, [filters]);
 
   useEffect(() => {
-    const queryString = `?PageNumber=${filters.PageNumber}&RowsOfPage=10&SortingCol=${filters.Sort}${
-      filters.Level ? `&courseLevelId=${filters.Level}` : ""
-    }${filters.category ? `&ListTech=${filters.category}` : ""}${
-      filters.type ? `&CourseTypeId=${filters.type}` : ""
-    }`;
     setQuery(queryString);
-  }, [filters, setQuery]);
+  }, [queryString, setQuery]);
 
   const handleResetFilters = () => {
     setFilters({
-      Level: null,
-      category: null,
-      type: null,
+      Level: [],
+      category: [],
+      type: [],
       PageNumber: 1,
       Sort: "Active",
     });

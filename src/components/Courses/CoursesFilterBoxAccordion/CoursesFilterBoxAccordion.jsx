@@ -6,11 +6,19 @@ function CoursesFilterBoxAccordion({ courses, title, filterKey, filters, setFilt
   const toggleAccordion = () => setIsOpen((prev) => !prev);
 
   const handleCheckboxChange = (id) => {
-    setFilters((prev) => ({
-      ...prev,
-      [filterKey]: prev[filterKey] === id ? null : id, 
-    }));
+    setFilters((prev) => {
+      const currentValues = prev[filterKey];
+      const newValues = currentValues.includes(id)
+        ? currentValues.filter((value) => value !== id) // Remove if already selected
+        : [...currentValues, id]; // Add if not selected
+
+      return {
+        ...prev,
+        [filterKey]: newValues,
+      };
+    });
   };
+
   return (
     <div className="flex flex-col justify-between w-full gap-5 bg-body shadow-inner p-5 rounded-t-xl">
       <button onClick={toggleAccordion} className="flex justify-between">
@@ -23,7 +31,7 @@ function CoursesFilterBoxAccordion({ courses, title, filterKey, filters, setFilt
               {course.levelName || course.techName || course.typeName}
               <input
                 type="checkbox"
-                checked={filters[filterKey] === course.id}
+                checked={filters[filterKey].includes(course.id)} // Check if the item is in the array
                 onChange={() => handleCheckboxChange(course.id)}
               />
             </label>

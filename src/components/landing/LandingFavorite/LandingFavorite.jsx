@@ -10,13 +10,13 @@ function LandingFavorite() {
         disc="محبوب ترین دسته بندی ها"
       />
 
-      <div className="container w-full mx-auto relative my-20">
+      <div className="container w-full mx-auto relative my-20 items-center content-center  ">
       <img
-          className="absolute inset-0 w-full container h-full object-cover -z-10 mt-10"
+          className="absolute inset-0 w-full container h-full  -z-10 "
           src="/public/images/icons/Rectangle-gonda.png"
           alt="background"
         />
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-20 p-2 sm:p-10 max-sm:p-20 ">
+        <div id="items" className="flex flex-wrap justify-center items-center gap-6 md:gap-12 max-md:gap-12 max-md:mt-10 lg:gap-20  p-2 sm:p-10 max-sm:p-20 mb-20">
           {FavoriteCats.map((item) => (
             <div
               key={item.id}

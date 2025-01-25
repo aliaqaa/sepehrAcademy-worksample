@@ -12,10 +12,19 @@ function CoursesPagination({ query, setQuery }) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = courses.totalPages || 1;
 
+  // Extract the current page from the query string
   useEffect(() => {
-    fetchCoursesWithPagination({ ...query, page: currentPage });
+    const params = new URLSearchParams(query);
+    const page = parseInt(params.get("PageNumber")) || 1;
+    setCurrentPage(page);
+  }, [query]);
+
+  // Fetch courses when the query or currentPage changes
+  useEffect(() => {
+    fetchCoursesWithPagination({ ...query, PageNumber: currentPage });
   }, [fetchCoursesWithPagination, query, currentPage]);
 
+  // Handle view mode changes based on screen size
   useEffect(() => {
     const handleResize = () => {
       if (window.matchMedia("(max-width: 1008px)").matches) {
@@ -35,16 +44,24 @@ function CoursesPagination({ query, setQuery }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Handle view mode change (grid/list)
   const handleViewChange = (newMode) => {
     setViewMode(newMode);
   };
 
+  // Handle page change
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
+
+      // Update the query string with the new page number
+      const params = new URLSearchParams(query);
+      params.set("PageNumber", page);
+      setQuery(params.toString());
     }
   };
 
+  // Loading state
   if (loading)
     return (
       <div className="container flex content-center items-center align-top">
@@ -52,11 +69,15 @@ function CoursesPagination({ query, setQuery }) {
       </div>
     );
 
+  // Error state
   if (error) return <div className="m-auto">Nothing to show</div>;
 
   return (
     <div className="flex flex-col">
+      {/* Top sort and view mode toggle */}
       <CoursesBoxTopSort setGrid={handleViewChange} />
+
+      {/* Course list/grid */}
       {viewMode === "grid" ? (
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-4">
           {courses.courseFilterDtos?.map((course) => (
@@ -72,6 +93,8 @@ function CoursesPagination({ query, setQuery }) {
           ))}
         </div>
       )}
+
+      {/* Pagination */}
       <div className="flex justify-center">
         <Pagination
           currentPage={currentPage}

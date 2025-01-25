@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 function CoursesHeroSection() {
   return (
     <div className="container mx-auto rounded-2xl p-4 sm:p-6 my-20 ">
-      <div className="container bg-[#EBF9F982] rounded-2xl h-48 sm:h-64 absolute w-full -z-10 "></div>
+      <div className="container bg-[#EBF9F982] rounded-2xl h-48 sm:h-64 absolute w-full -z-10 mt-10"></div>
 
       <div className="flex flex-col lg:flex-row justify-around items-center">
         <div id="rightside" className="text-center lg:text-left mb-8 lg:mb-0 ">

@@ -25,7 +25,7 @@ function NavigationSlider() {
   }  
 
   if (error) {  
-    return <div>Error: {error}</div>;  
+    return <div>خطا : ارتباط ممکن نیست !</div>;  
   }  
 
   return (  

@@ -46,7 +46,6 @@ function DefaultHeader() {
             </NavLink>
           ))}
         </div>
-
         <Link to="/auth" className="hidden md:block">
           <UserAccButton />
         </Link>

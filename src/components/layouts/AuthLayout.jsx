@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Outlet } from "react-router";
+import AuthFooter from "../common/AuthFooter";
+import AuthHeader from "../common/AuthHeader";
 
-function AuthLayout() {
+function AuthLayout({ children }) {
   return (
-    <div>AuthLayout</div>
-  )
+    <>
+      <div>
+        <AuthHeader />
+        <main>
+          {" "}
+          <Outlet />
+        </main>
+
+        <AuthFooter />
+      </div>
+    </>
+  );
 }
 
-export default AuthLayout
+export default AuthLayout;
