@@ -1,14 +1,13 @@
-import React from 'react'
-import RoutesApp from './routes/Route'
-function App() {
- 
+import React from "react";  
+import RoutesApp from "./routes/Route";  
 
-  return (
+
+function App() {  
+  return (  
     <>
-     
-    <RoutesApp/>
+      <RoutesApp />  
     </>
-  )
-}
+  );  
+}  
 
-export default App
+export default App;

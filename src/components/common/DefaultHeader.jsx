@@ -3,14 +3,15 @@ import logo from "/public/images/icons/logo (1).png";
 import UserAccButton from "./modules/UserAccButton/UserAccButton";
 import defaultNavbarItems from "../../mock/defaultNavbarItems";
 import { Link, NavLink } from "react-router";
+import Cookies from "js-cookie";
 
 function DefaultHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isJwt = Cookies.get('jwt');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   return (
     <>
       <div className="container m-auto flex justify-between p-5 items-center">
@@ -46,7 +47,7 @@ function DefaultHeader() {
             </NavLink>
           ))}
         </div>
-        <Link to="/auth" className="hidden md:block">
+        <Link to={isJwt ? "/userpanel" : "/auth"} className="hidden md:block">
           <UserAccButton />
         </Link>
 

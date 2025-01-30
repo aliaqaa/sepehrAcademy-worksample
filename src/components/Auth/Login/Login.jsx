@@ -3,14 +3,16 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import AuthInput from "../../common/modules/AuthInput/AuthInput";
 import AuthSubmitButton from "../../common/modules/AuthSubmitButton/AuthSubmitButton";
-import { redirect } from "react-router";
-
+import { useDispatch } from "react-redux";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate(); // Call useNavigate at the top level
 
   const { loginUser, loading, error: authError } = useAuth(); // Destructure loginUser, loading, and error from useAuth
 
@@ -22,17 +24,25 @@ const LoginForm = () => {
         rememberMe: data.rememberMe,
       };
 
-      const response = await loginUser(payload); // Call loginUser from useAuth
-      // Handle successful login (e.g., redirect or store token)
-      console.log(response);
-      alert(response.message)
-      localStorage.setItem("authToken", response.token); // Store the token
-      if (response.success === true) {
-        redirect("/")
+      const response = await loginUser(payload); // Get the response here
+
+      if (response.success) {
+        Cookies.set("jwt", response.token, {
+          expires: response.rememberMe ? 30 : 1, // Expires in 30 days if "remember me" is checked, otherwise 1 day
+          secure: true, // Ensure the cookie is only sent over HTTPS
+          sameSite: "strict", // Prevent cross-site requests
+        });
+        setTimeout(() => {
+         navigate("/")
+        }, 2000);
+        alert(response.message);
+      } else {
+        console.log(response.message); // Log the failure message
       }
     } catch (err) {
-      console.log(response.mass);
-      // Errors are already handled by useAuth, so no need to do anything here
+      // Handle errors when loginUser fails (e.g., network error)
+      console.error(err); // Log the error
+      console.log("Error during login: ", err.message); // Log the error message
     }
   };
 
@@ -68,7 +78,7 @@ const LoginForm = () => {
         rules={{
           required: "Password is required",
           minLength: {
-            value: 8,
+            value: 4,
             message: "Password must be at least 8 characters",
           },
         }}

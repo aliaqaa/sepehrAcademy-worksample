@@ -9,6 +9,8 @@ import News from "../pages/News/News";
 import NewsPage from "../components/News/NewsPage/NewsPage";
 import AuthLayout from "../components/layouts/AuthLayout";
 import Auth from "../components/Auth/Auth";
+import CmsLayout from "../components/layouts/CmsLayout";
+import Panel from "../pages/Panel/Panel";
 
 const RoutesApp = () => (
   <Router>
@@ -23,6 +25,9 @@ const RoutesApp = () => (
       </Route>
       <Route element={<AuthLayout />}>
         <Route path="/auth" element={<Auth />} />
+      </Route>
+      <Route element={<CmsLayout />}>
+        <Route path="/userpanel" element={<Panel />} />
       </Route>
     </Routes>
   </Router>

@@ -2,11 +2,14 @@ import React from "react";
 import { Link } from "react-router";
 import UserAccButton from "./modules/UserAccButton/UserAccButton";
 import logo from "/public/images/icons/logo (1).png";
+import Cookies from "js-cookie";
 
 function AuthHeader() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const isJwt = Cookies.get("jwt");
+
   return (
     <>
       <div className="container m-auto flex justify-between p-5 items-center">
@@ -31,7 +34,7 @@ function AuthHeader() {
           </svg>
         </div>
 
-        <Link to="/auth" className="hidden md:block">
+        <Link to={isJwt ? "/userpanel" : "/auth"} className="hidden md:block">
           <UserAccButton />
         </Link>
       </div>
