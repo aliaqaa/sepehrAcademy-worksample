@@ -4,25 +4,33 @@ import fallbackimg from "../../../public/images/post/kakablack.jpg";
 import PanelItems from "../../mock/PanelItems";
 import useGetProfile from "../../hooks/useGetProfile";
 import { ScaleLoader } from "react-spinners";
+import { IoIosLogOut } from "react-icons/io";
+
 import Dashboard from "./Dashboard/Dashboard";
+import UserInfoShow from "./UserInfo/UserInfoShow";
 function Panel() {
   const [activePanel, setActivePanel] = useState(1);
   const profilePic = useSelector((state) => state.userImage?.puctureAddress);
   const profileName = useSelector((state) => state.lName);
-console.log(profilePic)
-  const { profile, loading, error } = useGetProfile();
+  // const { profile, loading, error } = useGetProfile();
 
-  if (loading) {
-    return (
-      <div className="container flex content-center items-center align-top">
-        <ScaleLoader color="#36D7B7" className="m-auto" loading={loading} />
-      </div>
-    ); // Display a loading message while fetching
-  }
+  // useEffect(() => {
+  //   if (!profile) {
+  //     useGetProfile(); // Call the profile function to fetch data
+  //     console.log("fetched profile")
+  //   }
+  // }, [profile]); // Add isFetched and profile to the dependency array
+  // if (loading) {
+  //   return (
+  //     <div className="container flex content-center items-center align-top">
+  //       <ScaleLoader color="#36D7B7" className="m-auto" loading={loading} />
+  //     </div>
+  //   ); // Display a loading message while fetching
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>; // Display an error message if something went wrong
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>; // Display an error message if something went wrong
+  // }
 
   const onClickHandler = (id) => {
     setActivePanel(id); // Update activePanel based on the clicked button
@@ -30,19 +38,19 @@ console.log(profilePic)
 
   const renderComponent = () => {
     switch (activePanel) {
-      case "1":
+      case 1:
         return <Dashboard />;
-      case "2":
-        return <UserInfo />;
-      case "3":
+      case 2:
+        return <UserInfoShow />;
+      case 3:
         return <MyCourses />;
-      case "4":
+      case 4:
         return <ReservedCourses />;
-      case "5":
+      case 5:
         return <MyComments />;
-      case "6":
+      case 6:
         return <Favorites />;
-      case "7":
+      case 7:
         return <SecuritySettings />;
       default:
         return <Dashboard />;
@@ -71,19 +79,23 @@ console.log(profilePic)
             return (
               <button
                 key={item.id}
-                className={`rounded-s-xl my-1 flex items-center justify-start gap-x-3 p-2 ${
+                className={`rounded-s-xl my-1 flex items-center justify-start gap-x-10 p-2 text-center ${
                   activePanel === item.id
                     ? "bg-white text-black border-l-4 border-orange-500 font-extrabold text-2xl"
                     : "bg-transparent"
                 }`}
                 onClick={() => onClickHandler(item.id)}
               >
-                <item.icon className="icon" />
+                {activePanel === item.id ? <item.icon className="icon" /> : ""}
+
                 <span>{item.title}</span>
               </button>
             );
           })}
-          <button cl></button>
+          <button className="flex justify-start p-2 items-center gap-x-2">
+            <IoIosLogOut className="text-red-600 text-2xl"/>
+            خروج از حساب 
+          </button>
         </div>
       </div>
       <div id="leftside" className="w-3/4 p-4">
@@ -96,7 +108,6 @@ console.log(profilePic)
 export default Panel;
 
 // Placeholder components for each panel item
-const UserInfo = () => <div>اطلاعات کاربری</div>;
 const MyCourses = () => <div>دوره های من</div>;
 const ReservedCourses = () => <div>دوره های رزرو شده</div>;
 const MyComments = () => <div>دیدگاه های من</div>;

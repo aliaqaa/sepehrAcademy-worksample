@@ -28,7 +28,8 @@ const useGetProfile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const jwtToken = Cookies.get('jwt'); // Assuming the JWT token is stored in a cookie
+    const jwtToken = Cookies.get('jwt');
+    console.log(jwtToken)
     const fetchProfile = async () => {
       try {
         const response = await fetch("https://classapi.sepehracademy.ir/api/SharePanel/GetProfileInfo", {
